@@ -1,0 +1,46 @@
+<extend name="public/main" />
+
+<block name="main-content">
+    <div class="main-content-inner">
+        <div class="page-content">
+            <div class="page-header">
+                <h1>管理中心</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td width="25%">服务器操作系统</td>
+                                    <td width="25%">{$sys_info.os}</td>
+                                    <td width="25%">web服务器</td>
+                                    <td width="25%">{$sys_info.web_server}</td>
+                                </tr>
+                                <tr>
+                                    <td>PHP版本</td>
+                                    <td>{$sys_info.php_version}</td>
+                                    <td>Mysql版本</td>
+                                    <td>{$sys_info.mysql_version}</td>
+                                </tr>
+                                <tr>
+                                    <td>GD版本</td>
+                                    <td>{$sys_info.gd_info}</td>
+                                    <td>文件上传限制</td>
+                                    <td>{$sys_info.file_upload}</td>
+                                </tr>
+                                <tr>
+                                    <td>安全模式</td>
+                                    <td>{$sys_info.safe_mode}</td>
+                                    <td>Zlib支持</td>
+                                    <td>{$sys_info.zlib}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
