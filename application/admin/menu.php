@@ -10,7 +10,7 @@
 
 return array(
     'goods' => array('name' => '商品管理', 'icon' => 'shopping-bag', 'child' => array(
-        array('name' => '商品分类', 'controller' => 'Goods', 'act' => 'goodsList'),
+        array('name' => '商品分类', 'controller' => 'Goods', 'act' => 'goodsTypeList'),
         array('name' => '商品列表', 'controller' => 'Goods', 'act' => 'goodsList'),
         array('name' => '添加新商品', 'controller' => 'Goods', 'act' => 'goodsList'),
         array('name' => '商品属性', 'controller' => 'Goods', 'act' => 'goodsList'),
