@@ -14,10 +14,12 @@ use think\Request;
 
 class Common extends Controller
 {
+    public $request;
+
     protected function _initialize()
     {
-        $requset = Request::instance();
-        define('ACTION_NAME', $requset->action());
+        $this->request = Request::instance();
+        define('ACTION_NAME', $this->request->action());
 
         //过滤不需要登录的行为
         if (!in_array(ACTION_NAME, array('login'))) {
@@ -29,9 +31,30 @@ class Common extends Controller
                     }
                 }
                 $this->assign('menu', $menuArr);
+                $this->assign('admin_name', db('admin')->where('id', session('admin_id'))->value('username'));
+                $current['controller'] = strtolower($this->request->controller());
+                $current['action'] = $this->request->action();
+                $current['url'] = $this->request->baseUrl();
+                $this->assign('current', $current);
             } else {
                 $this->redirect('admin/login');
             }
         }
+    }
+
+    /**
+     * 管理员操作纪律
+     * @param $log_info 记录信息
+     */
+    public function admin_log($log_info)
+    {
+        $data['admin_id'] = session('admin_id');
+        $data['log_info'] = $log_info;
+        $data['log_ip'] = $this->request->ip();
+        $data['log_url'] = $this->request->baseUrl();
+        $data['log_time'] = time();
+        $data['controller'] = $this->request->controller();
+
+        db('admin_log')->insert($data); //插入表
     }
 }

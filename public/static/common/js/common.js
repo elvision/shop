@@ -12,15 +12,31 @@ $(function() {
         success: complete1, //提交后的方法
         dataType: 'json'
     });
+    $('.ajaxForm2').ajaxForm({
+        success: complete, //提交后的方法
+        dataType: 'json'
+    });
 });
 
-//失败不跳转，验证码刷新
-function complete1(data) {
-    if (data.status == 1) {
-        window.location.href = data.url;
+//成功跳转，失败不跳转，验证码刷新
+function complete1(result) {
+    if (result.data == 1) {
+        window.location.href = result.url;
     } else {
         $('#verify').val('');
         $('#verify_img').click();
-        layer.alert(data.msg, {icon: 5});
+        layer.alert(result.msg, {icon: 5});
+    }
+}
+
+//成功提示，失败不跳转
+function complete(result){
+    if(result.data == 1){
+        layer.alert(result.msg, {icon: 6}, function(index){
+            layer.close(index);
+            window.location.href = result.url;
+        });
+    }else{
+        layer.alert(result.msg, {icon: 5});
     }
 }

@@ -25,7 +25,7 @@
 
     <ul class="nav nav-list">
         <volist name="menu" id="vo">
-            <li>
+            <li <if condition="$current['controller'] eq $key">class="active open"</if>>
                 <a href="" class="dropdown-toggle">
                     <i class="menu-icon fa fa-{$vo.icon}"></i>
                     <span class="menu-text">{$vo.name}</span>
@@ -35,8 +35,8 @@
                 <if condition="$vo.child">
                     <ul class="submenu">
                         <volist name="vo['child']" id="val">
-                            <li>
-                                <a href="{:urL($val['url'])}">
+                            <li <if condition="$current['url'] eq url($val['url'])">class="active"</if>>
+                                <a href="{:url($val['url'])}">
                                     <i class="menu-icon fa fa-caret-right"></i> {$val.name}
                                 </a>
                             </li>

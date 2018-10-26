@@ -43,7 +43,7 @@
                                         <i class="ace-icon fa fa-coffee green"></i> 后台登录
                                     </h4>
                                     <div class="space-6"></div>
-                                    <form method="post" action="{:url('login')}">
+                                    <form class="ajaxForm1" method="post" action="{:url('login')}">
                                         <fieldset>
                                             <label class="block clearfix">
                                                 <span class="block input-icon input-icon-right">
@@ -59,11 +59,11 @@
                                             </label>
                                             <label class="block clearfix">
                                                 <span class="block input-icon input-icon-right">
-                                                    <input type="text" class="form-control" name="verify" placeholder="验证码" required />
+                                                    <input type="text" class="form-control" name="verify" id="verify" placeholder="验证码" required />
                                                     <i class="ace-icon fa fa-pencil"></i>
                                                 </span>
                                             </label>
-                                            <img src="{:captcha_src()}" onclick="this.src='/captcha?id='+Math.random()"  width="300" height="55"/>
+                                            <img src="{:captcha_src()}" id="verify_img" onclick="this.src='/captcha?id='+Math.random()" width="300" height="55"/>
                                             <div class="space"></div>
                                             <div class="clearfix">
                                                 <label class="inline">
@@ -94,8 +94,9 @@
 <!--[if IE]>
 <script src="__STATIC__/js/jquery-1.11.3.min.js"></script>
 <![endif]-->
-<script src="__PUBLIC__/layer.js"></script>
-<script src="__PUBLIC__/common.js"></script>
+<script src="__PUBLIC__/common/js/ajaxForm.js"></script>
+<script src="__PUBLIC__/common/layer/layer.js"></script>
+<script src="__PUBLIC__/common/js/common.js"></script>
 <script type="text/javascript">
     if ('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
