@@ -52,7 +52,7 @@ return array(
         array('name' => '文章分类', 'controller' => 'Article', 'act' => 'goodsList'),
     )),
     'admin' => array('name' => '权限管理', 'icon' => 'lock', 'child' => array(
-        array('name' => '管理员列表', 'controller' => 'Admin', 'act' => 'index'),
+        array('name' => '管理员列表', 'controller' => 'Admin', 'act' => 'goodsList'),
         array('name' => '管理员日志', 'controller' => 'Admin', 'act' => 'goodsList'),
         array('name' => '角色管理', 'controller' => 'Admin', 'act' => 'goodsList'),
         array('name' => '权限资源列表', 'controller' => 'Admin', 'act' => 'goodsList'),
