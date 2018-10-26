@@ -13,19 +13,33 @@ namespace app\admin\controller;
 use think\captcha\Captcha;
 use think\Controller;
 use think\Db;
-use think\Request;
 
 class Admin extends Common
 {
+    //管理员列表
     public function index()
     {
         return $this->fetch();
     }
 
+    //提交添加管理员操作
+    public function addAdmin()
+    {
+        if ($this->request->isPost()) {
+            $data = input('post.');
+
+            if (DB::table('__ADMIN__')->where('username', $data['username'])->count() > 0) {
+                $this->error('此管理员已经存在，请勿重复添加', url('admin/index'), 0);
+            }
+        } else {
+            $this->error('操作错误，请联系管理员', url('admin/index'), 0);
+        }
+    }
+
     //管理员登录
     public function login()
     {
-        if (Request::instance()->isPost()) {
+        if ($this->request->isPost()) {
             $captcha = new Captcha();
             if (!$captcha->check(input('verify'))) {
                 $this->error('验证码错误', url('admin/login'), 0);
@@ -34,22 +48,3 @@ class Admin extends Common
         return $this->fetch('login');
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
